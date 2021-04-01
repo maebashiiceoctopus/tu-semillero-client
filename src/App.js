@@ -5,6 +5,8 @@ import Contact from './pages/Admin-page/Contact';
 import SignIn from './pages/Admin-page/SignIn';
 import Home from './pages/Home';
 
+//admin routes
+
 function App() {
  return(
    <div>
