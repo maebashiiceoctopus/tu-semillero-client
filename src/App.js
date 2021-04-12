@@ -18,11 +18,7 @@ function App() {
   );
 }
 
-function RoutesConfig(route){
-  return true;
-  console.log (route)
 
-}
 function RouteConfig(route){
   return (
     <Route
