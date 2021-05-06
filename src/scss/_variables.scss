@@ -1,6 +1,7 @@
 
 $defaultFontSize: 16px;
 $primary-color: #7CB728;
+$primary-hover-color:#9de439;
 $primary-color-dark:#b0eb5f;
 $primary-color-ligth:#7CB728;
 
@@ -49,8 +50,8 @@ $media-breackpoint-down-xl:1199.98px;
 
 //responsive up size
 
-$media-breackpoint-down-xs:320px;
-$media-breackpoint-down-sm:576px;
-$media-breackpoint-down-md:768px;
-$media-breackpoint-down-lg:992px;
-$media-breackpoint-down-xl:1200px;
+$media-breackpoint-up-xs:320px;
+$media-breackpoint-up-sm:576px;
+$media-breackpoint-up-md:768px;
+$media-breackpoint-up-lg:992px;
+$media-breackpoint-up-xl:1200px;
