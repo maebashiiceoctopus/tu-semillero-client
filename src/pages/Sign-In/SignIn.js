@@ -1,11 +1,11 @@
 import React from "react";
 import { Layout, Tabs } from "antd";
 import { Redirect } from "react-router-dom";
+import RegisterForm from "../../components/admin/RegisterForm"
 
 import "./SignIn.scss";
 
 import Logo from "../../assets/img/png/svisi-logo.png";
-import { SpaceContext } from "antd/lib/space";
 
 export default function SignIn() {
   const { Content } = Layout;
@@ -22,7 +22,7 @@ export default function SignIn() {
               componente login form
             </TabPane>
             <TabPane tab={<span>Registrarse</span>} key="2">
-              componente register form
+            <RegisterForm/>
             </TabPane>
           </Tabs>
         </div>

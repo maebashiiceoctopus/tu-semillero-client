@@ -22,9 +22,7 @@ export default function MenuTop(props) {
         ></Button>
       </div>
       <div className="menu-top__right">
-        <Button type="link" icon={  <PoweroffOutlined />}>
-        
-        </Button>
+        <Button type="link" icon={<PoweroffOutlined />}></Button>
       </div>
     </div>
   );
