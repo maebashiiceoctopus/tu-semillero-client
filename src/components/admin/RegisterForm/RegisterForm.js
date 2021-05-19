@@ -1,53 +1,80 @@
 import React, { useState } from "react";
-import { Form, Input, Button, Checkbox } from "antd";
+import { Form, Input, Button, Checkbox, notification } from "antd";
 import { MailOutlined, LockOutlined } from "@ant-design/icons";
-import {emailValidation,minLengthValidation} from '../../../utils/formValidation'
+import {
+  emailValidation,
+  minLengthValidation,
+} from "../../../utils/formValidation";
 import "./registerForm.scss";
 
 export default function RegisterForm() {
-    const [inputs, setInputs] = useState({
-        email: "",
-        password: "",
-        repeatPassword: "",
-        privacyPolicy: false
+  const [inputs, setInputs] = useState({
+    email: "",
+    password: "",
+    repeatPassword: "",
+    privacyPolicy: false,
+  });
+  const [formValid, setFormValid] = useState({
+    email: false,
+    password: false,
+    repeatPassword: false,
+    privacyPolicy: false,
+  });
+
+  const changeForm = (e) => {
+    if (e.target.name === "privacyPolicy") {
+      setInputs({
+        ...inputs,
+        [e.target.name]: e.target.checked,
       });
-      const [formValid, setFormValid] = useState({
-        email: false,
-        password: false,
-        repeatPassword: false,
-        privacyPolicy: false
+    } else {
+      setInputs({
+        ...inputs,
+        [e.target.name]: e.target.value,
       });
-    
-      const changeForm = e => {
-        if (e.target.name === "privacyPolicy") {
-          setInputs({
-            ...inputs,
-            [e.target.name]: e.target.checked
-          });
-        } else {
-          setInputs({
-            ...inputs,
-            [e.target.name]: e.target.value
-          });
-        }
-      };
-    
-      const inputValidation = e => {
-        const { type, name } = e.target;
-    
-        if (type === "email") {
-          setFormValid({ ...formValid, [name]: emailValidation(e.target) });
-        }
-        if (type === "password") {
-          setFormValid({ ...formValid, [name]: minLengthValidation(e.target, 6) });
-        }
-        if (type === "checkbox") {
-          setFormValid({ ...formValid, [name]: e.target.checked });
-        }
-      };
+    }
+  };
+
+  const inputValidation = (e) => {
+    const { type, name } = e.target;
+
+    if (type === "email") {
+      setFormValid({ ...formValid, [name]: emailValidation(e.target) });
+    }
+    if (type === "password") {
+      setFormValid({ ...formValid, [name]: minLengthValidation(e.target, 6) });
+    }
+    if (type === "checkbox") {
+      setFormValid({ ...formValid, [name]: e.target.checked });
+    }
+  };
 
   const registerUser = () => {
-    console.log(inputs);
+    const { email, privacyPolicy, password, repeatPassword } = formValid;
+    const emailValue = inputs.email;
+    const privacyPolicyValue = inputs.privacyPolicy;
+
+    const passwordValue = inputs.password;
+    const repeatPasswordValue = inputs.repeatPassword;
+
+    if (
+      !emailValue ||
+      !passwordValue ||
+      !repeatPasswordValue ||
+      !privacyPolicyValue
+    ) {
+      notification["error"]({
+        message: "Todos los campos son obligatorios",
+      });
+    }else{
+      if(passwordValue !==repeatPasswordValue){
+        notification["error"]({
+          message:"Las contraseñas no coinciden"
+        })
+      }else{
+        console.log("Correcto...");
+      }
+    }
   };
 
   return (
