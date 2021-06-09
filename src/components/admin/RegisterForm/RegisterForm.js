@@ -82,11 +82,30 @@ export default function RegisterForm() {
           notification['success']({
             message:result.message
           })
+          resetForm();
         }
       }
     }
   };
-
+  const resetForm = ()=>{
+    const inputs = document.getElementsByTagName('input');
+    for(let i = 0; i< inputs.length ; i++){
+      inputs[i].classList.remove('success');
+      inputs[i].classList.remove('error');
+    }
+    setInputs({
+      email: "",
+    password: "",
+    repeatPassword: "",
+    privacyPolicy: false,
+    });
+    setFormValid({
+      email: false,
+      password: false,
+      repeatPassword: false,
+      privacyPolicy: false,
+    })
+  }
   return (
     <Form
       className="register-form"
