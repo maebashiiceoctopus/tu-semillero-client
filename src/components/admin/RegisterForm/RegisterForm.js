@@ -82,7 +82,10 @@ export default function RegisterForm() {
           notification['success']({
             message:result.message
           })
+<<<<<<< HEAD
           resetForm();
+=======
+>>>>>>> develop
         }
       }
     }
