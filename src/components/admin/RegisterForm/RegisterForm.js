@@ -6,6 +6,7 @@ import {
   minLengthValidation,
 } from "../../../utils/formValidation";
 import "./registerForm.scss";
+import { signUpApi } from "../../../api/user";
 
 export default function RegisterForm() {
   const [inputs, setInputs] = useState({
@@ -49,7 +50,7 @@ export default function RegisterForm() {
     }
   };
 
-  const registerUser = () => {
+  const registerUser = async e => {
     const { email, privacyPolicy, password, repeatPassword } = formValid;
     const emailValue = inputs.email;
     const privacyPolicyValue = inputs.privacyPolicy;
@@ -72,7 +73,16 @@ export default function RegisterForm() {
           message:"Las contraseñas no coinciden"
         })
       }else{
-        console.log("Correcto...");
+        const result = await signUpApi(inputs);
+        if(!result.ok ){
+          notification['error']({
+            message:result.message
+          });
+        }else{
+          notification['success']({
+            message:result.message
+          })
+        }
       }
     }
   };
