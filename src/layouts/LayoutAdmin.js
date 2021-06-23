@@ -4,7 +4,8 @@ import { Redirect, Route, Switch } from "react-router-dom";
 import MenuTop from '../components/admin/MenuTop';
 import MenuSider from '../components/admin/MenuSider';
 import AdminSignIn from '../pages/Sign-In/SignIn'
-import {getAccessToken , getRefreshToken} from '../api/auth'
+import {getAccessToken , getRefreshToken} from '../api/auth';
+import useAuth from '../hooks/useAuth';
 
 import "./layoutAdmin.scss";
 
@@ -12,12 +13,10 @@ export default function LayoutAdmin(props) {
   const { routes } = props;
   const [menuCollapsed,setMenucollapsed]=useState(false);
   const { Header, Content, Footer } = Layout;
-  const user=null;
+ 
+ const {user, isLoading}= useAuth();
 
-const accessToken= getAccessToken();
-console.log(accessToken);
-const refreshToken= getRefreshToken();
-console.log(refreshToken);
+
   if(!user){
     return(
     <>
