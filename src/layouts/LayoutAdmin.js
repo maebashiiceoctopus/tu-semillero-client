@@ -4,7 +4,7 @@ import { Redirect, Route, Switch } from "react-router-dom";
 import MenuTop from '../components/admin/MenuTop';
 import MenuSider from '../components/admin/MenuSider';
 import AdminSignIn from '../pages/Sign-In/SignIn'
-import {getAccessToken} from '../api/auth'
+import {getAccessToken , getRefreshToken} from '../api/auth'
 
 import "./layoutAdmin.scss";
 
@@ -14,9 +14,10 @@ export default function LayoutAdmin(props) {
   const { Header, Content, Footer } = Layout;
   const user=null;
 
-const token= getAccessToken();
-console.log(token);
-
+const accessToken= getAccessToken();
+console.log(accessToken);
+const refreshToken= getRefreshToken();
+console.log(refreshToken);
   if(!user){
     return(
     <>

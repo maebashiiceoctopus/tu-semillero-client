@@ -7,12 +7,20 @@ export function getAccessToken() {
 
   if (!accessToken || accessToken === "null") {
     return null;
-  } else {
   }
 
  return willExpireToken(accessToken) ? null : accessToken;
   
 }
+
+export function getRefreshToken(){
+    const refreshToken= localStorage.getItem(REFRESH_TOKEN);
+    if(!refreshToken || refreshToken=== "null"){
+        return null;
+    }
+    return willExpireToken(refreshToken) ? null : refreshToken;
+}
+
 
 function willExpireToken(token) {
   const seconds = 60;
