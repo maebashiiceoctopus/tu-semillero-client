@@ -42,14 +42,18 @@ export function refreshAccessToken(refreshToken) {
     })
     .then((result) => {
         if(!result){
-            //to do desloguear usuario
-
+            logout();
         }else{
             const {accessToken, refreshToken}= result;
             localStorage.setItem(ACCESS_TOKEN, accessToken);
             localStorage.setItem(REFRESH_TOKEN, refreshToken);
         }
     });
+}
+
+export function logout(){
+    localStorage.removeItem(ACCESS_TOKEN);
+    localStorage.removeItem(REFRESH_TOKEN);
 }
 
 function willExpireToken(token) {
