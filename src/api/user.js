@@ -54,7 +54,6 @@ export function signInApi(data) {
       return result;
     })
     .catch((err) => {
-  
      return err.message;
     });
 }
