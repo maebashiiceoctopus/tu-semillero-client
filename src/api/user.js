@@ -57,3 +57,53 @@ export function signInApi(data) {
      return err.message;
     });
 }
+
+
+export function getUser(token){
+  const url=`${basePath}/${apiVersion}/users`;
+
+  const params={
+    method:"GET",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: token,
+    },
+    
+  }
+
+  return fetch(url, params)
+  .then(response=>{
+    return response.json()
+  })
+  .then(result=>{
+    return  result;
+  })
+  .catch(err=>{
+    return err.message;
+  })
+}
+
+
+export function getUserActive(token, status){
+  const url=`${basePath}/${apiVersion}/user-active?active=${status}`;
+
+  const params={
+    method:"GET",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: token,
+    },
+    
+  }
+
+  return fetch(url, params)
+  .then(response=>{
+    return response.json()
+  })
+  .then(result=>{
+    return  result;
+  })
+  .catch(err=>{
+    return err.message;
+  })
+}
