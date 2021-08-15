@@ -4,6 +4,7 @@ import { EditOutlined, StopOutlined,DeleteOutlined,CheckOutlined} from "@ant-des
 
 import noAvatar from "../../../../assets/img/png/no-avatar.png";
 import Modal from "../../../Modal";
+import EditUserForm from "../EditUserForm/EditUserForm";
 
 import "./listUsers.scss";
 
@@ -49,7 +50,7 @@ function ActiveUsers(props) {
   const  editUser = user=>{
     setVisibleModal(true);
     setModalTitle(`Editar ${user.name} ${user.lastname}`);
-    setModalContent("Editando un usuario");
+    setModalContent(<EditUserForm user={user}/>);
   }
   return (
     <List
