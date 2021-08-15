@@ -1,1 +1,22 @@
-@import "../../scss/variables";
+@import '../../../../scss/index.scss';
+
+.list-users{
+    &__switch{
+        display: flex;
+        align-items: center;
+        margin-bottom: 20px;
+        >button{
+            margin-right: 20px;
+        }
+    }
+    .active-users{
+        background: $background-ligth;
+        padding: 10px 20px;
+        
+        .ant-list-item-meta{
+            display: flex;
+            align-items: center;
+        }
+
+    }
+}

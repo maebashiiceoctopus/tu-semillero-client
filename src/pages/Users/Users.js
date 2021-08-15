@@ -2,6 +2,8 @@ import  React, {useState,useEffect} from 'react';
 import {getAccessToken} from '../../api/auth';
 import {getUserActive} from '../../api/user';
 
+import ListUsers from '../../components/admin/Users/ListUsers';
+
 
 import "./users.scss";
 
@@ -15,19 +17,17 @@ export default  function Users(){
     console.log(usersInactive);
     useEffect(()=>{
         getUserActive(token, true).then(response=>{
-            setUsersActive(response);
+            setUsersActive(response.users);
           
         });
         getUserActive(token, false).then(response=>{
-            setUserInactive(response);
+            setUserInactive(response.users);
           
         })
     },[token])
     return(
-        <div>
-            <h1>
-                lista de usuarios
-            </h1>
+        <div className="users">
+            <ListUsers usersActive={usersActive} usersInactive={usersInactive} />
         </div>
     )
 }
