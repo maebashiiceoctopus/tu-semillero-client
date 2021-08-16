@@ -7,4 +7,22 @@
         border-style: dashed;
         padding: 10px;
         margin-bottom: 20px;
-    }}
+    }
+    .form-edit{
+        text-align: center;
+        .ant-form-item{
+            margin-top: 5px;
+            margin-top: 5px;
+            i{
+                color:rgba($color: #000000, $alpha: 1.0)
+            }
+        }
+        .ant-select{
+            width: 100%;
+        }
+        .btn-submit{
+            width: 100%;
+        }
+    }
+   
+}
