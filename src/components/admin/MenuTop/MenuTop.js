@@ -7,10 +7,16 @@ import {
   MenuUnfoldOutlined,
 } from "@ant-design/icons";
 
+import { logout } from "../../../api/auth";
+
 import SvisiLogo from "../../../assets/img/png/svisi-logo.png";
 
 export default function MenuTop(props) {
   const { menuCollapsed, setMenucollapsed } = props;
+  const logoutUser = () => {
+    logout();
+    window.location.reload();
+  };
   return (
     <div className="menu-top">
       <div className="menu-top__left">
@@ -22,7 +28,11 @@ export default function MenuTop(props) {
         ></Button>
       </div>
       <div className="menu-top__right">
-        <Button type="link" icon={<PoweroffOutlined />}></Button>
+        <Button
+          type="link"
+          onClick={logoutUser}
+          icon={<PoweroffOutlined />}
+        ></Button>
       </div>
     </div>
   );
