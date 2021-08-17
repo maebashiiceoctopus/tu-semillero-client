@@ -1,18 +1,15 @@
-# Getting Started with Create React App
+# SVISI: Blog de difusión de articulos cientificos desarrollados por estudiantes de la Fundación universitarea del Área Andina.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
 
-In the project directory, you can run:
+En la raiz del proyecto puedes ejecutar : 
 
 ### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Abrira la aplicación en modo de desarrollo, lo hará en la siguiente url
+ [http://localhost:3000](http://localhost:3000) 
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
 
 ### `npm test`
 
