@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import React, { useState ,useEffect} from "react";
 import { Switch, List, Avatar, Button } from "antd";
 import { EditOutlined, StopOutlined,DeleteOutlined,CheckOutlined} from "@ant-design/icons";
 
 import noAvatar from "../../../../assets/img/png/no-avatar.png";
 import Modal from "../../../Modal";
 import EditUserForm from "../EditUserForm/EditUserForm";
+import { getAvatarApi } from "../../../../api/user";
 
 import "./listUsers.scss";
 
@@ -57,8 +58,26 @@ function ActiveUsers(props) {
       className="active-users"
       itemLayout="horizontal"
       dataSource={usersActive}
-      renderItem={(user) => (
-        <List.Item
+      renderItem={(user) => <ActiveUser user={user} editUser={editUser}/>}
+    />
+  );
+}
+function ActiveUser(props){
+  const {user,editUser}=props;
+  const [avatar,setAvatar]=useState(null);
+
+  useEffect(() => {
+    if(user.avatar){
+      getAvatarApi(user.avatar).then(response=>{
+        setAvatar(response);
+      })
+    }else{
+      setAvatar(null);
+    }
+    
+  }, [user])
+  return(
+    <List.Item
           actions={[
             <Button type="primary" onClick={() => editUser(user)}>
               <EditOutlined />
@@ -76,7 +95,7 @@ function ActiveUsers(props) {
           ]}
         >
           <List.Item.Meta
-            avatar={<Avatar src={user.avatar ? user.avatar : noAvatar} />}
+            avatar={<Avatar src={avatar ? avatar : noAvatar} />}
             title={`${user.name ? user.name : "..."}
                   ${user.lastname ? user.lastname : "..."}
                  
@@ -84,9 +103,8 @@ function ActiveUsers(props) {
             description={user.email}
           />
         </List.Item>
-      )}
-    />
-  );
+  )
+
 }
 
 function InactiveUsers(props) {
