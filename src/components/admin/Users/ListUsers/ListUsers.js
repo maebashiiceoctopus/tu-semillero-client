@@ -62,6 +62,8 @@ function ActiveUsers(props) {
     />
   );
 }
+
+//render one user
 function ActiveUser(props){
   const {user,editUser}=props;
   const [avatar,setAvatar]=useState(null);
@@ -109,34 +111,58 @@ function ActiveUser(props){
 
 function InactiveUsers(props) {
   const { usersInactive } = props;
+
+  
   return (
     <List
       className="active-users"
       itemLayout="horizontal"
       dataSource={usersInactive}
-      renderItem={(user) => (
-        <List.Item
-          actions={[
-            <Button type="primary" onClick={() => console.log("Activar")}>
-              <CheckOutlined />
-            </Button>,
+      renderItem={(user) => <InactiveUser user={user} />}
 
-           
-            <Button type="danger" onClick={() => console.log("Eliminar usuario")}>
-             <DeleteOutlined />
-            </Button>,
-          ]}
-        >
-          <List.Item.Meta
-            avatar={<Avatar src={user.avatar ? user.avatar : noAvatar} />}
-            title={`${user.name ? user.name : "..."}
-                  ${user.lastname ? user.lastname : "..."}
-                 
-                `}
-            description={user.email}
-          />
-        </List.Item>
-      )}
+     
     />
   );
+}
+
+function InactiveUser(props){
+  const {user}= props;
+  const [avatar,setAvatar]=useState(null);
+  useEffect(() => {
+    if(user.avatar){
+      getAvatarApi(user.avatar).then(response=>{
+        setAvatar(response);
+      })
+    }else{
+      setAvatar(null);
+    }
+    
+  }, [user])
+
+  return(
+   
+      <List.Item
+        actions={[
+          <Button type="primary" onClick={() => console.log("Activar")}>
+            <CheckOutlined />
+          </Button>,
+
+         
+          <Button type="danger" onClick={() => console.log("Eliminar usuario")}>
+           <DeleteOutlined />
+          </Button>,
+        ]}
+      >
+        <List.Item.Meta
+          avatar={<Avatar src={avatar ? avatar : noAvatar} />}
+          title={`${user.name ? user.name : "..."}
+                ${user.lastname ? user.lastname : "..."}
+               
+              `}
+          description={user.email}
+        />
+      </List.Item>
+
+  )
+  
 }
