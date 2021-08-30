@@ -15,7 +15,7 @@ export default  function Users(){
 
     console.log(usersActive);
     
-    console.log(usersInactive);
+
     useEffect(()=>{
         getUserActive(token, true).then(response=>{
             setUsersActive(response.users);

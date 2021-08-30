@@ -50,7 +50,7 @@ export function signInApi(data) {
       return response.json();
     })
     .then((result) => {
-      console.log(result);
+    
       return result;
     })
     .catch((err) => {

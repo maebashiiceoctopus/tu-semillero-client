@@ -45,25 +45,25 @@ export default function EditUserForm(props) {
     const token = getAccessToken();
     let userUpdate = userData;
 
-    if (userUpdate.password || userUpdate.repeatPassword) {
-      if (userUpdate.password !== userUpdate.repeatPassword) {
+    if(userUpdate.password|| userUpdate.repeatPassword){
+      if(userUpdate.password !== userUpdate.repeatPassword){
         notification["error"]({
-          message: "Las contraseñas tienen que ser iguales."
+          message:"Las contraseñas no coinciden."
         });
         return;
-      } else {
+      }else{
         delete userUpdate.repeatPassword;
-      
       }
     }
 
-
-    if (!userUpdate.name || !userUpdate.lastname || !userUpdate.email) {
+    if(!userUpdate.name ||!userUpdate.lastname ||!userUpdate.email){
       notification["error"]({
-        message: "El nombre, apellidos y email son obligatorios."
+        message:"El nombre, el apellido y el email son obligatorios."
       });
       return;
     }
+
+ 
 
     if (typeof userUpdate.avatar === "object") {
       uploadAvatarApi(token, userUpdate.avatar, user._id).then(response => {
