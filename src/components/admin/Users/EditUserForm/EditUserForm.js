@@ -86,6 +86,7 @@ export default function EditUserForm(props) {
         setReloadUsers(true);
       });
     }
+    setUserData({...userData,password:"", repeatPassword:""});
     
   };
 
