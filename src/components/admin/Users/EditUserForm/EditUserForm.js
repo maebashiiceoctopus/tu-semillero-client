@@ -10,7 +10,7 @@ import { getAccessToken } from '../../../../api/auth';
 import "./EditUserForm.scss";
 
 export default function EditUserForm(props) {
-  const { user } = props;
+  const { user,  setIsVisible,setReloadUsers} = props;
   const [avatar, setAvatar] = useState(null);
   const [userData, setUserData] = useState({});
 
@@ -60,6 +60,7 @@ export default function EditUserForm(props) {
       notification["error"]({
         message: "El nombre, apellidos y email son obligatorios."
       });
+     
       return;
     }
 
@@ -70,17 +71,21 @@ export default function EditUserForm(props) {
           notification["success"]({
             message: result.message
           });
-         
+          setIsVisible(false);
+          setReloadUsers(true);
         });
       });
     } else {
       updateUserApi(token, userUpdate, user._id).then(result => {
         notification["success"]({
           message: result.message
+
         });
-        
+        setIsVisible(false);
+        setReloadUsers(true);
       });
     }
+    
   };
 
   return (

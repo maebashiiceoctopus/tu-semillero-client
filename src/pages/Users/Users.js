@@ -10,6 +10,7 @@ import "./users.scss";
 export default  function Users(){
     const [usersActive, setUsersActive]= useState([]);
     const [usersInactive, setUserInactive]= useState([]);
+    const [reloadUsers,setReloadUsers]=useState([false]);
     const token = getAccessToken();
 
     console.log(usersActive);
@@ -24,10 +25,11 @@ export default  function Users(){
             setUserInactive(response.users);
           
         })
-    },[token])
+        setReloadUsers(false);
+    },[token, reloadUsers])
     return(
         <div className="users">
-            <ListUsers usersActive={usersActive} usersInactive={usersInactive} />
+            <ListUsers usersActive={usersActive} usersInactive={usersInactive} setReloadUsers={setReloadUsers}/>
         </div>
     )
 }
