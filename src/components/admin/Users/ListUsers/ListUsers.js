@@ -50,7 +50,7 @@ function ActiveUsers(props) {
   const { usersActive ,setVisibleModal ,setModalContent,setModalTitle,setReloadUsers} = props;
   const  editUser = user=>{
     setVisibleModal(true);
-    setModalTitle(`Editar ${user.name} ${user.lastname}`);
+    setModalTitle(`Editar ${user.name ? user.name:"datos" } ${user.lastname? user.lastname:" "}`);
     setModalContent(<EditUserForm user={user} setIsVisible={setVisibleModal} setReloadUsers={setReloadUsers}/>);
   }
   return (

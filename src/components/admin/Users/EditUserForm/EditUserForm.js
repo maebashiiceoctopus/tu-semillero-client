@@ -48,7 +48,7 @@ export default function EditUserForm(props) {
     if (userUpdate.password || userUpdate.repeatPassword) {
       if (userUpdate.password !== userUpdate.repeatPassword) {
         notification["error"]({
-          message: "Las contraseñas no coinciden."
+          message: "Las contraseñas tienen que ser iguales."
         });
         return;
       } else {
@@ -56,11 +56,11 @@ export default function EditUserForm(props) {
       }
     }
 
+
     if (!userUpdate.name || !userUpdate.lastname || !userUpdate.email) {
       notification["error"]({
         message: "El nombre, apellidos y email son obligatorios."
       });
-     
       return;
     }
 
