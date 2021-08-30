@@ -1,10 +1,11 @@
 import React from "react";
-import { Avatar, Form, Input, Select, Row, Col, Button } from "antd";
+import { Avatar, Form, Input, Select, Row, Col, Button ,notification} from "antd";
 import { useDropzone } from "react-dropzone";
 import { useState, useCallback, useEffect } from "react";
 import noAvatar from "../../../../assets/img/png/no-avatar.png";
 import { UserOutlined, MailOutlined, LockOutlined } from "@ant-design/icons";
-import { getAvatarApi } from "../../../../api/user";
+import { getAvatarApi , uploadAvatarApi,updateUserApi} from "../../../../api/user";
+import { getAccessToken } from '../../../../api/auth';
 
 import "./EditUserForm.scss";
 
@@ -39,8 +40,47 @@ export default function EditUserForm(props) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [avatar]);
 
-  const updateUser = (e) => {
-    console.log(userData);
+  const updateUser = e => {
+   
+    const token = getAccessToken();
+    let userUpdate = userData;
+
+    if (userUpdate.password || userUpdate.repeatPassword) {
+      if (userUpdate.password !== userUpdate.repeatPassword) {
+        notification["error"]({
+          message: "Las contraseñas no coinciden."
+        });
+        return;
+      } else {
+        delete userUpdate.repeatPassword;
+      }
+    }
+
+    if (!userUpdate.name || !userUpdate.lastname || !userUpdate.email) {
+      notification["error"]({
+        message: "El nombre, apellidos y email son obligatorios."
+      });
+      return;
+    }
+
+    if (typeof userUpdate.avatar === "object") {
+      uploadAvatarApi(token, userUpdate.avatar, user._id).then(response => {
+        userUpdate.avatar = response.avatar;
+        updateUserApi(token, userUpdate, user._id).then(result => {
+          notification["success"]({
+            message: result.message
+          });
+         
+        });
+      });
+    } else {
+      updateUserApi(token, userUpdate, user._id).then(result => {
+        notification["success"]({
+          message: result.message
+        });
+        
+      });
+    }
   };
 
   return (
