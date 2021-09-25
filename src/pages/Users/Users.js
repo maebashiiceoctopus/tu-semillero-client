@@ -1,6 +1,6 @@
 import  React, {useState,useEffect} from 'react';
 import {getAccessToken} from '../../api/auth';
-import {getUserActive} from '../../api/user';
+import {getUserActiveApi} from '../../api/user';
 
 import ListUsers from '../../components/admin/Users/ListUsers';
 
@@ -17,14 +17,12 @@ export default  function Users(){
     
 
     useEffect(()=>{
-        getUserActive(token, true).then(response=>{
-            setUsersActive(response.users);
-          
+        getUserActiveApi(token, true).then((response) => {
+          setUsersActive(response.users);
         });
-        getUserActive(token, false).then(response=>{
-            setUserInactive(response.users);
-          
-        })
+        getUserActiveApi(token, false).then((response) => {
+          setUserInactive(response.users);
+        });
         setReloadUsers(false);
     },[token, reloadUsers])
     return(

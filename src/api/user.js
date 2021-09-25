@@ -58,7 +58,7 @@ export function signInApi(data) {
     });
 }
 
-export function getUser(token) {
+export function getUserApi(token) {
   const url = `${basePath}/${apiVersion}/users`;
 
   const params = {
@@ -81,7 +81,7 @@ export function getUser(token) {
     });
 }
 
-export function getUserActive(token, status) {
+export function getUserActiveApi(token, status) {
   const url = `${basePath}/${apiVersion}/user-active?active=${status}`;
 
   const params = {
@@ -183,6 +183,28 @@ export function activateUserApi(token,userId,status){
   }).then( result=>{
     return result.message;
   }).catch(err=>{
+    return err.message;
+  })
+}
+
+
+export function deleteUserApi(token, userId){
+    const url = `${basePath}/${apiVersion}/delete-user/${userId}`;
+  const params = {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: token,
+    }
+  }
+  return fetch(url,params)
+  .then(response=>{
+    return response.json();
+  })
+  .then(result=>{
+    return result.message;
+  })
+  .catch(err=>{
     return err.message;
   })
 }
