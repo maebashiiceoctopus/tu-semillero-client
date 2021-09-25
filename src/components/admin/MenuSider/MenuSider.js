@@ -1,7 +1,7 @@
 import React from "react";
 import { Link ,withRouter} from "react-router-dom";
 import { Layout, Menu } from "antd";
-import { HomeOutlined, MenuOutlined,UserOutlined } from "@ant-design/icons";
+import { HomeOutlined,UserOutlined } from "@ant-design/icons";
 import "./menuSider.scss";
 
  function MenuSider(props) {

@@ -13,7 +13,7 @@ export default  function Users(){
     const [reloadUsers,setReloadUsers]=useState([false]);
     const token = getAccessToken();
 
-    console.log(usersActive);
+
     
 
     useEffect(()=>{

@@ -5,6 +5,7 @@ import { EditOutlined, StopOutlined,DeleteOutlined,CheckOutlined} from "@ant-des
 import noAvatar from "../../../../assets/img/png/no-avatar.png";
 import Modal from "../../../Modal";
 import EditUserForm from "../EditUserForm/EditUserForm";
+import AddUserForm from "../AddUserForm/AddUserForm";
 import { getAvatarApi ,activateUserApi,deleteUserApi} from "../../../../api/user";
 import { getAccessToken } from "../../../../api/auth";
 
@@ -18,31 +19,54 @@ export default function ListUsers(props) {
   const [isVisibleModal , setVisibleModal]=useState(false);
   const [modalTitle , setModalTitle]=useState("");
   const [ modalContent, setModalContent]=useState(null);
+  
+  const addUserModal=()=>{
+    setVisibleModal(true)
+    setModalTitle("Creando nuevo usuario");
+    setModalContent(  
+      <AddUserForm setVisibleModal={setVisibleModal} setReloadUsers={setReloadUsers}></AddUserForm>
+    )
+  }
 
 
   return (
     <div className="list-users">
-      <div className="list-users__switch">
-        <Switch
-          defaultChecked
-          onChange={() => setViewUsersActive(!viewUsersActive)}
-        />
-        <span>
-          {viewUsersActive ? "Usuarios activos" : "usuarios inactivos"}
-        </span>
+      <div className="list-users__header">
+        <div className="list-users__header-switch">
+          <Switch
+            defaultChecked
+            onChange={() => setViewUsersActive(!viewUsersActive)}
+          />
+          <span>
+            {viewUsersActive ? "Usuarios activos" : "usuarios inactivos"}
+          </span>
+        </div>
+
+        <Button type="primary" onClick={addUserModal}>
+          Crear usuario
+        </Button>
       </div>
+
       {viewUsersActive ? (
-        <ActiveUsers usersActive={usersActive} setVisibleModal={setVisibleModal} setModalTitle={setModalTitle}
-        setModalContent={setModalContent} setReloadUsers={setReloadUsers}/>
+        <ActiveUsers
+          usersActive={usersActive}
+          setVisibleModal={setVisibleModal}
+          setModalTitle={setModalTitle}
+          setModalContent={setModalContent}
+          setReloadUsers={setReloadUsers}
+        />
       ) : (
-        <InactiveUsers usersInactive={usersInactive} setReloadUsers={setReloadUsers}/>
+        <InactiveUsers
+          usersInactive={usersInactive}
+          setReloadUsers={setReloadUsers}
+        />
       )}
 
       <Modal
-       title={modalTitle}
-       isVisible={isVisibleModal}
-       setIsVisible={setVisibleModal}
-       >
+        title={modalTitle}
+        isVisible={isVisibleModal}
+        setIsVisible={setVisibleModal}
+      >
         {modalContent}
       </Modal>
     </div>
