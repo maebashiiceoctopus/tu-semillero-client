@@ -132,7 +132,7 @@ function ActiveUser(props){
             >
               <StopOutlined />
             </Button>,
-            <Button type="danger" onClick={() => console.log("Eliminar usuario")}>
+            <Button type="danger" onClick={showDeleteConfirm}>
              <DeleteOutlined />
             </Button>,
           ]}
