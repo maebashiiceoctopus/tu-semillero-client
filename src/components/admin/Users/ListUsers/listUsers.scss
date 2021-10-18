@@ -23,7 +23,10 @@
     
     .active-users{
         background: $background-ligth;
-        padding: 10px 20px;
+    
+        @include mq-min(md) {
+            padding: 10px 20px;
+         }
         
         .ant-list-item-meta{
             display: flex;

@@ -1,4 +1,5 @@
 @import '../../../scss/variables';
+@import '../../../scss/mixins';
 
 .menu-top{
     display: flex;
@@ -17,15 +18,31 @@
     }
 
     &__left{
-        &-logo{
+        &-logo-desk{
             height: 60px;
             width: 200px;
             padding: 0 10px;
+            @include mq-max(sm) {
+                display: none;
+             }
+           
+        }
+        
+        &-logo-movil{
+            height: 60px;
+            width: 80px;
+            padding: 0 5px;
+            @include mq-min(md) {
+                display: none;
+            }
         }
     }
     &__right{
         position: absolute;
-        right: 0;
+        right: 17px;
+        @include mq-min(md) {
+           right: 0;
+        }
     }
     
 }
