@@ -4,7 +4,7 @@ import { Redirect, Route, Switch } from "react-router-dom";
 import MenuTop from "../components/admin/MenuTop";
 import MenuSider from "../components/admin/MenuSider";
 import AdminSignIn from "../pages/Sign-In/SignIn";
-import { getAccessToken, getRefreshToken } from "../api/auth";
+/* import { getAccessToken, getRefreshToken } from "../api/auth"; */
 import useAuth from "../hooks/useAuth";
 
 import "./layoutAdmin.scss";

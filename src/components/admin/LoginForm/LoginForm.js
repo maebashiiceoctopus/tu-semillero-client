@@ -1,6 +1,6 @@
 import React,{useState} from "react";
 import "./loginForm.scss";
-import { Form, Input, Button, Checkbox, notification } from "antd";
+import { Form, Input, Button, notification } from "antd";
 import { MailOutlined, LockOutlined } from "@ant-design/icons";
 import { signInApi } from '../../../api/user';
 import { ACCESS_TOKEN, REFRESH_TOKEN} from '../../../utils/constants'
