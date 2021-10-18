@@ -1,4 +1,5 @@
 @import "../../scss/variables";
+@import "../../scss/mixins";
 
 .sign-in {
   background-image: url("../../assets/img/svg/bg.svg");
@@ -20,9 +21,11 @@
         background-color: $background-ligth;
         .ant-tabs{
             width: 90vw;
-            @media (min-width:$media-breackpoint-up-lg){
+
+            @include mq-min(md) {
                 width: auto ;
             }
+           
         }
     }
     .ant-tabs-nav-container{
@@ -40,10 +43,11 @@
         border-radius: 0px  !important;
         margin: 0 !important;
         justify-content: center;
-        @media(min-width:$media-breackpoint-up-lg ){
+        @include mq-min(md) {
             width: 220px;
             font-size: 0en +23px / $defaultFontSize;
         }
+       
         &:hover{
             color: $font-grey-dark;
         }
