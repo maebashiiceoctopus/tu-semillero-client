@@ -1,32 +1,47 @@
-@import '../../../scss/index.scss';
+@import "../../../scss/index.scss";
 
-.menu-home{
-    position: sticky;
-    top: 0;
-    background-color:#001529 ;
-    border: 0;
-    display: flex;
-    align-items: center;
-    margin: 0 auto;
-    justify-content: space-around;
-    
-    li{
-        
-        border: 0 !important;
-       a{
-           color: $background-ligth !important;
-           font-weight: bold;
-           font-size: 1.2rem;
-           &:hover{
-               color: $primary-color !important;
-           }
-       }
-    }
+.menu-home {
+  position: sticky;
+  top: 0;
+  background-color: #001529;
+  border: 0;
+  display: flex;
+  align-items: center;
+  margin: 0 auto;
+  justify-content: space-around;
+  @include mq-max(sm) {
+    height: 80px;
+  }
 
-    &__logo{
-        padding: 10px;
-        img{
-            width: 200px;
-        }
+  li {
+    border: 0 !important;
+    a {
+      color: $background-ligth !important;
+      font-weight: bold;
+      font-size: 1.2rem;
+      @include mq-max(sm) {
+       font-size: 0.9rem;
+      }
+      &:hover {
+        color: $primary-color !important;
+      }
     }
+  }
+
+  .logo-desk {
+    padding: 10px;
+    width: 200px;
+    display: none;
+    @include mq-min(md) {
+      display: block;
+    }
+  }
+
+  .logo-movil {
+    width: 50px;
+    display: none;
+    @include mq-max(sm) {
+      display: block;
+    }
+  }
 }
