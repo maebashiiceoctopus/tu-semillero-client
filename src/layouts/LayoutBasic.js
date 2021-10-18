@@ -8,17 +8,22 @@ export default function LayoutBasic(props) {
   const { routes } = props;
   const { Footer } = Layout;
   return (
-    <Row>
-      <Col md={4} />
+    <main className="main-container">
+         <MenuHome/>
+      <section className="main-container__content">
+     
+        <LoadRoutes  routes={routes}/>
 
-      <Col md={16}>
-      <MenuHome/>
-    <LoadRoutes  routes={routes}/>
-        <Footer></Footer>
-      </Col>
+      </section>
+      
+        <Footer>  </Footer>
+    
+    </main>
+    
+ 
 
-      <Col md={4}></Col>
-    </Row>
+      
+    
   );
 }
 function LoadRoutes({ routes }) {
