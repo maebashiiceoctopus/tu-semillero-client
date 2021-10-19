@@ -8,22 +8,17 @@ export default function LayoutBasic(props) {
   const { routes } = props;
   const { Footer } = Layout;
   return (
-    <main className="main-container">
-         <MenuHome/>
+    <>
+      <nav className="main-container">
+        <MenuHome />
+      </nav>
+
       <section className="main-container__content">
-     
-        <LoadRoutes  routes={routes}/>
-
+        <LoadRoutes routes={routes} />
       </section>
-      
-        <Footer>  </Footer>
-    
-    </main>
-    
- 
 
-      
-    
+      <Footer> </Footer>
+    </>
   );
 }
 function LoadRoutes({ routes }) {

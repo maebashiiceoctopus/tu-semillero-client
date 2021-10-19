@@ -1,0 +1,55 @@
+@import "../../../scss/index.scss";
+
+.home-banner {
+  display: flex;
+  flex-direction: column;
+  background-image: url('../../../assets/img/svg/blob-scene-haikei.svg');
+  background-size: cover;
+  align-items: center;
+  @include mq-min(md) {
+    
+    flex-direction: row;
+
+
+  }
+
+  &__title{
+    font-size: 1rem;
+    width: 80%;
+    margin: 2rem auto;
+    font-family: 'Roboto', sans-serif;
+    text-align: center;
+    @include mq-min(md) {
+    text-align: left;
+    width: 80%;
+    font-size: 1.5rem;
+    margin: 1rem;
+    }
+    @include mq-min(lg) {
+     font-size: 3rem;
+      width: 60%;
+      margin: 5rem;
+    }
+ 
+    h1{
+     color:white;
+     font-weight: bold;
+     
+    }
+  }
+  &__img{
+    width: 80%;
+    @include mq-min(md) {
+      width: 60%;
+    }
+    img{
+      width: 100%;
+      height: auto;
+    }
+  }
+
+  
+
+  
+
+}
