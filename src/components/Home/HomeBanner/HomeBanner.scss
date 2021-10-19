@@ -22,14 +22,18 @@
     @include mq-min(md) {
     text-align: left;
     width: 80%;
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     margin: 1rem;
     }
     @include mq-min(lg) {
-     font-size: 3rem;
+     font-size: 2rem;
       width: 60%;
       margin: 5rem;
     }
+    @include mq-min(xl) {
+      font-size: 3rem;
+      
+     }
  
     h1{
      color:white;
