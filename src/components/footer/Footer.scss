@@ -1,0 +1,23 @@
+@import "../../scss/index.scss";
+
+.footer {
+  background-color: $primary-color-dark !important;
+  border-top: 3px solid $primary-color;
+  color: $font-ligth;
+
+  padding: 2rem;
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    text-align: center;
+    @include mq-min(md) {
+        flex-direction:  row;
+        }
+
+    .copyright {
+      margin-top: 1rem;
+    }
+  }
+}

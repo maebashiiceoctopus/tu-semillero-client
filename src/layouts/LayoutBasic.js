@@ -1,12 +1,13 @@
 import React from "react";
-import { Layout, Row, Col } from "antd";
+
 import { Route, Switch } from "react-router-dom";
 import "./layoutBasic.scss";
 import MenuHome from "../components/Home/MenuHome";
+import FooterHome from "../components/footer"
 
 export default function LayoutBasic(props) {
   const { routes } = props;
-  const { Footer } = Layout;
+
   return (
     <>
       <nav className="main-container">
@@ -17,7 +18,7 @@ export default function LayoutBasic(props) {
         <LoadRoutes routes={routes} />
       </section>
 
-      <Footer> </Footer>
+      <FooterHome/>
     </>
   );
 }
