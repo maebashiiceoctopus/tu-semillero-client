@@ -2,7 +2,7 @@
 $defaultFontSize: 16px;
 $primary-color: #7CB728;
 $primary-hover-color:#9de439;
-$primary-color-dark:#b0eb5f;
+$primary-color-dark:#001529;
 $primary-color-ligth:#7CB728;
 
 
@@ -39,19 +39,12 @@ $success: #84b84c;
 $error:#f00;
 
 
-//responsive down size
-
-$media-breackpoint-down-xs:412.98px;
-$media-breackpoint-down-sm:573.98px;
-$media-breackpoint-down-md:767.98px;
-$media-breackpoint-down-lg:991.98px;
-$media-breackpoint-down-xl:1199.98px;
 
 
-//responsive up size
 
-$media-breackpoint-up-xs:320px;
-$media-breackpoint-up-sm:576px;
-$media-breackpoint-up-md:768px;
-$media-breackpoint-up-lg:992px;
-$media-breackpoint-up-xl:1200px;
+$breakpoints: (
+    sm  : 600px,
+    md  : 768px,
+    lg  : 1024px,
+    xl  : 1920px,
+ );

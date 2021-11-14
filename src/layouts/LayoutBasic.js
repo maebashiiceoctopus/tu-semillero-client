@@ -1,23 +1,25 @@
 import React from "react";
-import { Layout } from "antd";
+
 import { Route, Switch } from "react-router-dom";
 import "./layoutBasic.scss";
+import MenuHome from "../components/Home/MenuHome";
+import FooterHome from "../components/footer"
 
 export default function LayoutBasic(props) {
   const { routes } = props;
-  const { Content, Footer } = Layout;
+
   return (
-    <Layout>
-      <h2>Menu ...</h2>
+    <>
+      <nav className="main-container">
+        <MenuHome />
+      </nav>
 
-      <Layout>
-        <Content>
-          <LoadRoutes routes={routes} />
-        </Content>
+      <section className="main-container__content">
+        <LoadRoutes routes={routes} />
+      </section>
 
-        <Footer>Footer app</Footer>
-      </Layout>
-    </Layout>
+      <FooterHome/>
+    </>
   );
 }
 function LoadRoutes({ routes }) {

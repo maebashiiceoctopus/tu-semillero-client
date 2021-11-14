@@ -1,9 +1,10 @@
 import React from 'react';
+import HomeBanner from "../components/Home/HomeBanner";
 
 export default function Home(){
     return (
         <div>
-            <h1>Estamos en home</h1>
+         < HomeBanner/>
         </div>
     )
 }
