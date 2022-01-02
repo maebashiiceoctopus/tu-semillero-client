@@ -49,7 +49,7 @@ const Blog = (props) => {
         <Button type="primary">Nuevo Post</Button>
       </div>
    
-      <Postlist posts={posts}/>
+      <Postlist posts={posts} setReloadPosts={setReloadPosts}/>
       <Pagination posts={posts} location={location} history={history}/>
       <Modal
         title={modalTitle}
