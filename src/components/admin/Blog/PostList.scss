@@ -1,0 +1,28 @@
+@import '../../../scss/index.scss';
+
+
+.posts-list{
+    background-color: white;
+    padding: 10px 20px;
+    
+    .ant-list-item{
+
+        display: flex;
+        flex-direction: column;
+        .ant-list-item-meta{
+            width: 100%;
+            text-align: center;
+            margin-bottom: 1rem;
+            @include mq-min(md) {
+           
+                text-align: left;
+                margin-bottom: 0;
+            }
+        }
+        @include mq-min(md) {
+            flex-direction: row;
+           
+        }
+       
+    }
+}

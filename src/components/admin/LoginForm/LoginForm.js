@@ -20,7 +20,6 @@ export default function LoginForm() {
 
     const login =async e =>{
       
-        console.log(inputs);
 
         const result =await signInApi(inputs);
 
