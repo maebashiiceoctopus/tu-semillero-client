@@ -16,6 +16,7 @@ import {getAccessToken} from "../../../../api/auth";
 import { addPostApi, updatePostApi } from "../../../../api/posts"
 
 import "./AddEditPostForm.scss";
+import { loadPartialConfig } from "@babel/core";
 
 export default function AddEditPostForm(props) {
   const { setIsVisibleModal, setReloadPosts, post } = props;
@@ -29,13 +30,63 @@ export default function AddEditPostForm(props) {
     }
   }, [post]);
 
-  const processPost = e =>{
+
+  const processPost = e => {
+ 
+    const { description, url, content, date } = postData;
+
+    if (!description || !url || !content || !date) {
+      notification["error"]({
+        message: "Todos los campos son obligatorios."
+      });
+    } else {
       if (!post) {
-          console.log("creando post")
+        addPost();
+        console.log(postData)
       } else {
-          console.log("editando post")
+        updatePost();
       }
-  }
+    }
+  };
+
+  const addPost = () => {
+    const token = getAccessToken();
+
+    addPostApi(token, postData)
+      .then(response => {
+        const typeNotification = response.code === 200 ? "success" : "warning";
+        notification[typeNotification]({
+          message: response.message
+        });
+        setIsVisibleModal(false);
+        setReloadPosts(true);
+        setPostData({});
+      })
+      .catch(() => {
+        notification["error"]({
+          message: "Error del servidor."
+        });
+      });
+  };
+
+  const updatePost = () => {
+    const token = getAccessToken();
+    updatePostApi(token, post._id, postData)
+      .then(response => {
+        const typeNotification = response.code === 200 ? "success" : "warning";
+        notification[typeNotification]({
+          message: response.message
+        });
+        setIsVisibleModal(false);
+        setReloadPosts(true);
+        setPostData({});
+      })
+      .catch(() => {
+        notification["error"]({
+          message: "Error del servidor."
+        });
+      });
+  };
 
   return (
     <div className="add-edit-post-form">
@@ -60,8 +111,8 @@ function AddEditForm(props) {
             className
             prefix={<FontSizeOutlined />}
             placeholder="Titulo"
-            value={postData.title}
-            onChange={e => setPostData({ ...postData, title: e.target.value })}
+            value={postData.description}
+            onChange={e => setPostData({ ...postData, description: e.target.value })}
           />
         </div>
         <div className="post-form-content__input">
@@ -70,6 +121,12 @@ function AddEditForm(props) {
             prefix={<LinkOutlined />}
             placeholder="url"
             value={postData.url}
+            onChange={e =>
+                setPostData({
+                  ...postData,
+                  url: transformTextToUrl(e.target.value)
+                })
+              }
            
           />
         </div>
@@ -79,13 +136,19 @@ function AddEditForm(props) {
             format="DD/MM/YYYY HH:mm:ss"
             placeholder="Fecha de publicación"
             value={postData.date && moment(postData.date)}
-            
+            onChange={(e, value) =>
+                setPostData({
+                  ...postData,
+                  date: moment(value, "DD/MM/YYYY HH:mm:ss").toISOString()
+                })
+              }
           />
         </div>
       </section>
       <Editor
         
-        value="<p>This is the initial content of the editor.</p>"
+        value={postData.content ? postData.content : ""}
+
          init={{
            height: 400,
            menubar: true,
@@ -100,6 +163,9 @@ function AddEditForm(props) {
            'removeformat | help',
            content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:14px }'
          }}
+         onBlur={e =>
+            setPostData({ ...postData, content: e.target.getContent() })
+          }
        />
     
     <Button type="primary" htmlType="submit" className="btn-submit">
@@ -110,3 +176,8 @@ function AddEditForm(props) {
   );
 }
 
+
+function transformTextToUrl(text) {
+    const url = text.replace(" ", "-");
+    return url.toLowerCase();
+  }

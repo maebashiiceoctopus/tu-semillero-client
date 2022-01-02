@@ -54,6 +54,19 @@ const Blog = (props) => {
     );
   };
 
+  const editPost = post => {
+    setIsVisibleModal(true);
+    setModalTitle("Editar post");
+    setModalContent(
+      <AddEditPostForm
+        setIsVisibleModal={setIsVisibleModal}
+        setReloadPosts={setReloadPosts}
+        post={post}
+      />
+    );
+  };
+
+
   if(!posts ){
     return null;
   }
@@ -64,7 +77,7 @@ const Blog = (props) => {
         <Button type="primary" onClick={addPost}>Nuevo Post</Button>
       </div>
    
-      <Postlist posts={posts} setReloadPosts={setReloadPosts}/>
+      <Postlist posts={posts} setReloadPosts={setReloadPosts} editPost={editPost} />
       <Pagination posts={posts} location={location} history={history}/>
       <Modal
         title={modalTitle}

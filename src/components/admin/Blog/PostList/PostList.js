@@ -48,7 +48,7 @@ export default function Postlist(props) {
     <List
       dataSource={posts.docs}
       renderItem={post => (
-        <Post post={post} deletePost={deletePost}  />
+        <Post post={post} deletePost={deletePost}  editPost={editPost} />
       )}
     />
   </div>
@@ -57,7 +57,7 @@ export default function Postlist(props) {
 }
 
 function Post(props) {
-  const { post, deletePost } = props;
+  const { post, deletePost,editPost } = props;
 
   return (
     <List.Item
@@ -69,7 +69,7 @@ function Post(props) {
         </Link>,
 
         <Button type="primary">
-          <EditOutlined />
+          <EditOutlined onClick={()=> editPost(post)} />
         </Button>,
         <Button type="danger" onClick={() => deletePost(post)}>
           <DeleteOutlined />
