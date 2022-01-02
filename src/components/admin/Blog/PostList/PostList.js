@@ -5,8 +5,8 @@ import { Link } from "react-router-dom";
 import { EyeOutlined, EditOutlined, DeleteOutlined } from "@ant-design/icons";
 
 import "./PostList.scss";
-import {getAccessToken} from "../../../api/auth";
-import {deletePostApi} from "../../../api/posts"
+import {getAccessToken} from "../../../../api/auth";
+import {deletePostApi} from "../../../../api/posts"
 
 const { confirm } = Modal;
 
