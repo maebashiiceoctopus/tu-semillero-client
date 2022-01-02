@@ -1,1 +1,1 @@
-export {default} from "./AddEditPostForm"
+export {default} from "./AddEditPostForm";

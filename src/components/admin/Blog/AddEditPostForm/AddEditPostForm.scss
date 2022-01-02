@@ -1,1 +1,35 @@
 @import '../../../../scss/index.scss';
+
+.post-form{
+    
+    display: flex;
+    flex-direction: column;
+
+    &-content{
+        display: flex;
+        flex-direction: column;
+
+        @include mq-min(md) {
+           width: 100%;
+            flex-direction: row;
+        }
+       
+        &__input{
+            padding: 5px;
+            @include mq-min(md) {
+           
+                width: 100%;
+            }
+        }
+    }
+    
+  .tox-tinymce {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    width: 100%;
+  }
+
+  .btn-submit {
+    width: 100%;
+  }
+}

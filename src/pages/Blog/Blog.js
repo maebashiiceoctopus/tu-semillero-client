@@ -5,6 +5,7 @@ import queryString from "query-string";
 import { withRouter } from "react-router-dom";
 import Postlist from "../../components/admin/Blog/PostList/PostList";
 
+
 import "./Blog.scss";
 import { getPostsApi } from "../../api/posts";
 import Pagination from "../../components/Pagination/Pagination";
@@ -70,7 +71,10 @@ const Blog = (props) => {
         isVisible={isVisibleModal}
         setIsVisible={setIsVisibleModal}
         width="75%"
-      />
+        
+      >
+        {modalContent}
+        </Modal>
     </div>
   );
 };
