@@ -102,8 +102,8 @@ export function getPostApi(urlPost) {
 }
 
 
-export function uploadAvatarApi(token, cover, id) {
-  const url = `${basePath}/${apiVersion}/upload-avatar/${id}`;
+export function uploadCoverApi(token, cover, id) {
+  const url = `${basePath}/${apiVersion}/upload-cover/${id}`;
 
   const formData = new FormData();
 

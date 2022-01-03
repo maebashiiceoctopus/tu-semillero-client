@@ -15,7 +15,7 @@ import { Editor } from "@tinymce/tinymce-react";
 import { LinkOutlined, FontSizeOutlined, DeleteOutlined } from "@ant-design/icons";
 
 import {getAccessToken} from "../../../../api/auth";
-import { addPostApi, updatePostApi } from "../../../../api/posts"
+import { addPostApi, updatePostApi ,uploadCoverApi} from "../../../../api/posts"
 
 import "./AddEditPostForm.scss";
 
@@ -33,6 +33,12 @@ export default function AddEditPostForm(props) {
     }
   }, [post]);
 
+  useEffect(() => {
+    if (coverImage) {
+      setPostData({ ...postData, coverImage: coverImage.file });
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [coverImage]);
 
   const processPost = e => {
  
@@ -57,13 +63,19 @@ export default function AddEditPostForm(props) {
 
     addPostApi(token, postData)
       .then(response => {
+        console.log(response);
         const typeNotification = response.code === 200 ? "success" : "warning";
         notification[typeNotification]({
           message: response.message
         });
-        setIsVisibleModal(false);
-        setReloadPosts(true);
-        setPostData({});
+       
+       
+        uploadCoverApi(token,postData.coverImage, response.postId).then(
+          (resD)=>{
+            setIsVisibleModal(false);
+            setReloadPosts(true);
+          }
+        )
       })
       .catch(() => {
         notification["error"]({
