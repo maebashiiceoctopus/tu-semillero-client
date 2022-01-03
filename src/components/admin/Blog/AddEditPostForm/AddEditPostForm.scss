@@ -1,5 +1,22 @@
 @import '../../../../scss/index.scss';
+.add-edit-post-form{
 
+  &__upload{
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 10px;
+    .upload-cover-image{
+      width: 80px;
+    }
+  }
+
+  &__text{
+    font-size: 0.9rem;
+  }
+ 
+}
 .post-form{
     
     display: flex;
@@ -22,7 +39,7 @@
             }
         }
     }
-    
+  
   .tox-tinymce {
     margin-top: 20px;
     margin-bottom: 20px;

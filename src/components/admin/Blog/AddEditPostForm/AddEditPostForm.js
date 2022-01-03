@@ -1,7 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback} from "react";
 import {
-  Row,
-  Col,
+  Image,
   Form,
   Input,
   Button,
@@ -9,6 +8,9 @@ import {
   notification
 } from "antd";
 import moment from "moment";
+import { useDropzone } from "react-dropzone";
+import nocoverImage from "../../../../assets/img/png/no-pictures.png";
+
 import { Editor } from "@tinymce/tinymce-react";
 import { LinkOutlined, FontSizeOutlined, DeleteOutlined } from "@ant-design/icons";
 
@@ -16,11 +18,12 @@ import {getAccessToken} from "../../../../api/auth";
 import { addPostApi, updatePostApi } from "../../../../api/posts"
 
 import "./AddEditPostForm.scss";
-import { loadPartialConfig } from "@babel/core";
 
 export default function AddEditPostForm(props) {
   const { setIsVisibleModal, setReloadPosts, post } = props;
   const [postData, setPostData] = useState({});
+  const [coverImage, setcoverImage] = useState(null);
+
 
   useEffect(() => {
     if (post) {
@@ -89,14 +92,19 @@ export default function AddEditPostForm(props) {
   };
 
   return (
-    <div className="add-edit-post-form">
+    <section className="add-edit-post-form">
+      <div className="add-edit-post-form__upload">
+        <h2 className="add-edit-post-form__text">Por favor selecciona una imagen de vista previa:</h2>
+      <CoverImageUpload coverImage={coverImage} setcoverImage={setcoverImage} />
+      </div>
+       
       <AddEditForm
         postData={postData}
         setPostData={setPostData}
         post={post}
         processPost={processPost}
       />
-    </div>
+    </section>
   );
 }
 
@@ -175,7 +183,46 @@ function AddEditForm(props) {
     </Form>
   );
 }
+function CoverImageUpload(props) {
+  const { coverImage, setcoverImage } = props;
+  
+  const [coverImageUrl, setcoverImageUrl]= useState(null);
 
+  useEffect(() => {
+    if (coverImage) {
+      if (coverImage.preview) {
+        setcoverImageUrl(coverImage.preview);
+      } else {
+        setcoverImageUrl(coverImage);
+      }
+    } else {
+      setcoverImageUrl(null);
+    }
+  }, [coverImage]);
+
+  const onDrop = useCallback(
+    (acceptedFiles) => {
+      const file = acceptedFiles[0];
+      setcoverImage({ file, preview: URL.createObjectURL(file) });
+    },
+    [setcoverImage]
+  );
+  const { getRootProps, getInputProps, isDragActive } = useDropzone({
+    accept: "image/jpeg, image/png",
+    noKeyboard: true,
+    onDrop,
+  });
+  return (
+    <div className="upload-cover-image" {...getRootProps()}>
+      <input {...getInputProps()} />
+      {isDragActive ? (
+        <Image  src={nocoverImage} preview="false"/>
+      ) : (
+        <Image  preview="false"  src={coverImageUrl ? coverImageUrl : nocoverImage} />
+      )}
+    </div>
+  );
+}
 
 function transformTextToUrl(text) {
     const url = text.replace(" ", "-");
