@@ -100,3 +100,29 @@ export function getPostApi(urlPost) {
       return err;
     });
 }
+
+
+export function uploadAvatarApi(token, cover, id) {
+  const url = `${basePath}/${apiVersion}/upload-avatar/${id}`;
+
+  const formData = new FormData();
+
+  formData.append("cover", cover, cover.name);
+  const params = {
+    method: "POST",
+    body: formData,
+    headers: {
+      Authorization: token,
+    },
+  };
+  return fetch(url, params)
+    .then((response) => {
+      return response.json();
+    })
+    .then((result) => {
+      return result;
+    })
+    .catch((err) => {
+      return err.message;
+    });
+}

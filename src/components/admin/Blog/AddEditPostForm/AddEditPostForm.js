@@ -36,7 +36,7 @@ export default function AddEditPostForm(props) {
 
   const processPost = e => {
  
-    const { description, url, content, date } = postData;
+    const { description, url, content, date,cover } = postData;
 
     if (!description || !url || !content || !date) {
       notification["error"]({
@@ -155,7 +155,7 @@ function AddEditForm(props) {
       </section>
       <Editor
         
-
+        initialValue={postData.content ? postData.content : ""}
          init={{
            height: 400,
            menubar: true,
