@@ -155,7 +155,6 @@ function AddEditForm(props) {
       </section>
       <Editor
         
-        value={postData.content ? postData.content : ""}
 
          init={{
            height: 400,
