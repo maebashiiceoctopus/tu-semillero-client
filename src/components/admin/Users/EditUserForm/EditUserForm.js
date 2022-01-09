@@ -3,7 +3,7 @@ import { Avatar, Form, Input, Select, Row, Col, Button ,notification} from "antd
 import { useDropzone } from "react-dropzone";
 
 import { useState, useCallback, useEffect } from "react";
-import noAvatar from "../../../../assets/img/png/no-pictures.png";
+import noAvatar from "../../../../assets/img/png/no-avatar.png";
 import { UserOutlined, MailOutlined, LockOutlined } from "@ant-design/icons";
 import { getAvatarApi , uploadAvatarApi,updateUserApi} from "../../../../api/user";
 import { getAccessToken } from '../../../../api/auth';

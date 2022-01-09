@@ -9,13 +9,14 @@ import {
 } from "antd";
 import moment from "moment";
 import { useDropzone } from "react-dropzone";
-import nocoverImage from "../../../../assets/img/png/no-pictures.png";
+import noCoverImage from "../../../../assets/img/png/no-pictures.png";
 
 import { Editor } from "@tinymce/tinymce-react";
 import { LinkOutlined, FontSizeOutlined, DeleteOutlined } from "@ant-design/icons";
 
 import {getAccessToken} from "../../../../api/auth";
 import { addPostApi, updatePostApi ,uploadCoverApi} from "../../../../api/posts"
+
 
 import "./AddEditPostForm.scss";
 
@@ -39,6 +40,8 @@ export default function AddEditPostForm(props) {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [coverImage]);
+
+
 
   const processPost = e => {
  
@@ -227,9 +230,9 @@ function CoverImageUpload(props) {
     <div className="upload-cover-image" {...getRootProps()}>
       <input {...getInputProps()} />
       {isDragActive ? (
-        <Image  src={nocoverImage} preview="false"/>
+        <Image  src={noCoverImage} preview="false"/>
       ) : (
-        <Image  preview="false"  src={coverImageUrl ? coverImageUrl : nocoverImage} />
+        <Image  preview="false"  src={coverImageUrl ? coverImageUrl : noCoverImage} />
       )}
     </div>
   );

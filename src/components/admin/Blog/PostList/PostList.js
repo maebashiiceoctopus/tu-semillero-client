@@ -1,5 +1,5 @@
-import React from "react";
-import { List, Button, notification, Modal } from "antd";
+import React, { useState,useEffect } from "react";
+import { List, Button, notification, Modal,Image } from "antd";
 import { Link } from "react-router-dom";
 
 import { EyeOutlined, EditOutlined, DeleteOutlined } from "@ant-design/icons";
@@ -7,12 +7,11 @@ import { EyeOutlined, EditOutlined, DeleteOutlined } from "@ant-design/icons";
 import "./PostList.scss";
 import {getAccessToken} from "../../../../api/auth";
 import {deletePostApi} from "../../../../api/posts"
-
+import { getCoverApi } from "../../../../api/posts";
 const { confirm } = Modal;
 
 export default function Postlist(props) {
   const { posts, setReloadPosts, editPost } = props;
-
  
   const deletePost = post => {
     const accessToken = getAccessToken();
@@ -43,6 +42,7 @@ export default function Postlist(props) {
     console.log(post);
   };
 
+
   return (
     <div className="posts-list">
     <List
@@ -58,6 +58,18 @@ export default function Postlist(props) {
 
 function Post(props) {
   const { post, deletePost,editPost } = props;
+  const [coverImage,setcoverImage]=useState(null);
+
+useEffect(()=>{
+  if(post.cover){
+    getCoverApi(post.cover).then(response=>{
+      setcoverImage(response);
+    })
+  }else{
+    setcoverImage(null)
+  }
+},[post])
+
 
   return (
     <List.Item
@@ -77,6 +89,9 @@ function Post(props) {
       ]}
     >
       <List.Item.Meta title={post.description} />
+      <Image src={coverImage}></Image>
     </List.Item>
   );
 }
+
+

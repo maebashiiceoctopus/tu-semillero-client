@@ -126,3 +126,16 @@ export function uploadCoverApi(token, cover, id) {
       return err.message;
     });
 }
+
+
+export function getCoverApi(coverName) {
+  const url = `${basePath}/${apiVersion}/get-cover/${coverName}`;
+
+  return fetch(url)
+    .then((response) => {
+      return response.url;
+    })
+    .catch((err) => {
+      return err.message;
+    });
+}
