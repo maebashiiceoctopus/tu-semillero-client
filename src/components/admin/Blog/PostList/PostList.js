@@ -87,8 +87,13 @@ useEffect(()=>{
         </Button>,
       ]}
     >
-      <List.Item.Meta title={post.description} />
+      <div  className="post-image">
       <Image src={coverImage}></Image>
+      </div>
+     
+      <List.Item.Meta title={post.description} />
+      
+    
     </List.Item>
   );
 }
