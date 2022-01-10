@@ -91,9 +91,9 @@ function Post(props) {
   return (
     <Card
       className="card-contaider__card"
-      style={{ width: 300 }}
+      
       cover={
-        <img
+        <img className="img-content"
           alt="example"
           src={coverImage}
         />

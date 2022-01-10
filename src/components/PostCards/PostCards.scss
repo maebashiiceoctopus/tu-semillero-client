@@ -35,6 +35,7 @@
 
   .card-container{
     margin-top: 2rem;
+   
     .ant-list-items{
       width: 80%;
       margin:0 auto;
@@ -47,7 +48,12 @@
         background-color: $font-grey-ligth;
         margin: 1rem;
         box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-      
+        .ant-card-cover{
+          img{
+            height: 100%;
+            object-fit: cover;
+          }
+        }
    
         .ant-card-body{
           .ant-card-meta{
