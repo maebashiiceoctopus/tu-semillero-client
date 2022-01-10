@@ -51,11 +51,7 @@ const routes =[
         component: LayoutBasic,
         exact:false,
         routes: [
-            {
-                path:'/',
-                component: Home,
-                exact:true
-            },
+           
             {
                 path:'/BlogPosts',
                 component: BlogPosts,

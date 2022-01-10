@@ -1,5 +1,5 @@
 import React,{useState,useEffect} from "react";
-import { Spin,List,notification,Card,Avatar} from "antd";
+import { Spin,List,notification,Card,Button} from "antd";
 import { EditOutlined, EllipsisOutlined, SettingOutlined } from '@ant-design/icons';
 
 import { Link } from "react-router-dom";
@@ -11,9 +11,9 @@ import "moment/locale/es";
 
 
 
-import "./PostList.scss";
+import "./PostCards.scss";
 
-export default function PostList(props) {
+export default function PostCards(props) {
   const {location,history}=props;
 
 
@@ -50,7 +50,7 @@ console.log(posts)
 
   return (
     <div>
-       <List
+       <List className="card-container"
           dataSource={posts.docs}
           renderItem={post => <Post post={post} />}
         />
@@ -65,7 +65,8 @@ function Post (props){
 
   const {post}=props;
   return (
-    <Card
+    
+    <Card className="card-contaider__card"
     style={{ width: 300 }}
     cover={
       <img
@@ -79,9 +80,17 @@ function Post (props){
       title={post.description}
       
     />
-    <p dangerouslySetInnerHTML={{ __html: post.description }}>
+    <p className="post-description" dangerouslySetInnerHTML={{ __html: post.description }}>
      
     </p>
+    <div className="button-container">
+    <Link to={`blogPost/${post.url}`}>
+    <Button className="button-post" type="primary">Ver más</Button>
+    </Link>
+
+    </div>
+   
+  
   </Card>
   )
 }

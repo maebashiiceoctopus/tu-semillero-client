@@ -4,7 +4,7 @@ import { Row, Col } from "antd";
 import { useParams } from "react-router-dom";
 import HomeBanner from "../components/Home/HomeBanner";
 import PostInfo from "../components/PostInfo";
-import PostList from "../components/PostList";
+import PostCards from "../components/PostCards";
 
 
 
@@ -24,7 +24,7 @@ export default function BlogPosts(props) {
             <PostInfo url={url} />
           ) : (
               <> < HomeBanner/>
-               <PostList location={location} history={history} />
+               <PostCards location={location} history={history} />
               
               </>
           

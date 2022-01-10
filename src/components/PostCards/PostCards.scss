@@ -1,0 +1,57 @@
+@import '../../scss/index.scss';
+
+
+.pagination {
+    text-align: center;
+    margin-top:1rem;
+  }
+  
+  .card-container{
+    .ant-list-items{
+      width: 80%;
+      margin:0 auto;
+      justify-content: center;
+      display: grid;
+      grid-template-columns: 300px 300px 300px;
+      column-gap: 5rem;
+   
+      .ant-card{
+        background-color: $font-grey-ligth;
+        margin: 1rem;
+        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+      
+   
+        .ant-card-body{
+          .ant-card-meta{
+            .ant-card-meta-detail{
+              .ant-card-meta-description{
+                max-height: 200px;
+                
+              }
+            }
+          }
+   
+        }
+      }
+      .post-description{
+        height: 100px;
+      }
+   
+     .button-container{
+       display: flex;
+       justify-content: center;
+       
+   
+       .button-post{
+         display: flex;
+         justify-content: center;
+         width: 100px;
+         background-color: $primary-color-ligth;
+         border: $primary-color-ligth;
+         font-size: bold;
+       }
+     }
+     
+     }
+  }
+  
