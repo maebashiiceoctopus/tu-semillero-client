@@ -53,7 +53,7 @@ const routes =[
         routes: [
            
             {
-                path:'/BlogPosts',
+                path:'/',
                 component: BlogPosts,
                 exact:true
             },

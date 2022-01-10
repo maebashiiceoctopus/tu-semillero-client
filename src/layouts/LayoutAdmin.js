@@ -11,7 +11,7 @@ import "./layoutAdmin.scss";
 
 export default function LayoutAdmin(props) {
   const { routes } = props;
-  const [menuCollapsed, setMenucollapsed] = useState(true);
+  const [menuCollapsed, setMenucollapsed] = useState(false);
   const { Header, Content, Footer } = Layout;
 
   const { user, isLoading } = useAuth();
@@ -42,7 +42,6 @@ export default function LayoutAdmin(props) {
           <Content className="layout-admin__content">
             <LoadRoutes routes={routes} />
           </Content>
-          <Footer className="layout-admin__footer">Tusemillero</Footer>
         </Layout>
       </Layout>
     );

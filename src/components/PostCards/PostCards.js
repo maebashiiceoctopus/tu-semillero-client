@@ -84,7 +84,7 @@ function Post (props){
      
     </p>
     <div className="button-container">
-    <Link to={`blogPost/${post.url}`}>
+    <Link to={`blog/${post.url}`}>
     <Button className="button-post" type="primary">Ver más</Button>
     </Link>
 
