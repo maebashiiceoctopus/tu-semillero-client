@@ -6,7 +6,35 @@
     margin-top:1rem;
   }
   
+  .post-container{
+   
+    padding: 5rem;
+    .section-title{
+      font-size: 2.2rem;
+      font-weight: bold;
+      text-align: center;
+      margin: 0 auto;
+    }
+    .line{
+      margin: 0 auto;
+      height: 2px;
+      width: 180px;
+      border: none;
+      background-color:$primary-color-ligth;
+    }
+    .section-description{
+
+      font-size: 1.2rem;
+      width: 50%;
+      margin: 1.5rem auto;
+      text-align: center
+      
+      ;
+    }
+  }
+
   .card-container{
+    margin-top: 2rem;
     .ant-list-items{
       width: 80%;
       margin:0 auto;

@@ -38,7 +38,7 @@ export default function PostInfo(props) {
   return (
     <div className="container">
     
-        <title>{postInfo.description} | Agustín Navarro Galdon</title>
+        <title>{postInfo.description}</title>
     
       <div className="post-info">
         <h1 className="post-info__title">{postInfo.description}</h1>
