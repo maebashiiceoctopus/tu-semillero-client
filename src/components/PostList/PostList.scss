@@ -5,3 +5,30 @@
     text-align: center;
     margin-top:1rem;
   }
+  
+  .ant-list-items{
+   width: 80%;
+   margin:0 auto;
+   justify-content: center;
+   display: grid;
+   grid-template-columns: 300px 300px 300px;
+   column-gap: 5rem;
+
+   .ant-card{
+     background-color: pink;
+     margin: 1rem;
+   
+
+     .ant-card-body{
+       .ant-card-meta{
+         .ant-card-meta-detail{
+           .ant-card-meta-description{
+             max-height: 200px;
+             
+           }
+         }
+       }
+
+     }
+   }
+  }
