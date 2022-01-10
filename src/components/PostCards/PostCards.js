@@ -10,7 +10,9 @@ import { Link } from "react-router-dom";
 import moment from "moment";
 import queryString from "query-string";
 import Pagination from "../Pagination/Pagination";
-import { getPostApi, getPostsApi } from "../../api/posts";
+import { getPostsApi } from "../../api/posts";
+import { getCoverApi } from "../../api/posts";
+
 import "moment/locale/es";
 
 import "./PostCards.scss";
@@ -66,23 +68,41 @@ export default function PostCards(props) {
 
 function Post(props) {
   const { Meta } = Card;
-
+ 
   const { post } = props;
+
+  console.log(post)
+
+  const [coverImage,setcoverImage]=useState(null);
+  console.log(post)
+
+
+  useEffect(()=>{
+    if(post.cover){
+      getCoverApi(post.cover).then(response=>{
+        setcoverImage(response);
+      })
+    }
+    
+  },[post])
+
+
+
   return (
     <Card
       className="card-contaider__card"
-      style={{ width: 300 }}
+      
       cover={
-        <img
+        <img className="img-content"
           alt="example"
-          src="https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png"
+          src={coverImage}
         />
       }
     >
       <Meta title={post.description} />
       <p
         className="post-description"
-        dangerouslySetInnerHTML={{ __html: post.description }}
+        dangerouslySetInnerHTML={{ __html: post.content }}
       ></p>
       <div className="button-container">
         <Link to={`blog/${post.url}`}>

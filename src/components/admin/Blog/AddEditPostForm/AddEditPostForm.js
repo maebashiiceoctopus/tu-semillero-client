@@ -46,6 +46,7 @@ export default function AddEditPostForm(props) {
   const processPost = e => {
  
     const { description, url, content, date,cover } = postData;
+    console.log(postData)
 
     if (!description || !url || !content || !date) {
       notification["error"]({
@@ -89,21 +90,28 @@ export default function AddEditPostForm(props) {
 
   const updatePost = () => {
     const token = getAccessToken();
-    updatePostApi(token, post._id, postData)
-      .then(response => {
-        const typeNotification = response.code === 200 ? "success" : "warning";
-        notification[typeNotification]({
-          message: response.message
-        });
-        setIsVisibleModal(false);
-        setReloadPosts(true);
-        setPostData({});
-      })
-      .catch(() => {
-        notification["error"]({
-          message: "Error del servidor."
-        });
-      });
+    uploadCoverApi(token,postData.coverImage,postData._id).then(
+      (response)=>{
+        updatePost.cover = response.cover;
+        updatePostApi(token, postData._id,postData.coverImage, postData)
+          .then(response => {
+            
+            const typeNotification = response.code === 200 ? "success" : "warning";
+            notification[typeNotification]({
+              message: response.message
+            });
+            setIsVisibleModal(false);
+            setReloadPosts(true);
+            setPostData({});
+          })
+          .catch(() => {
+            notification["error"]({
+              message: "Error del servidor."
+            });
+          });
+      }
+    )
+    
   };
 
   return (
