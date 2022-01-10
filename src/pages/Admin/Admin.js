@@ -3,7 +3,7 @@ import React from 'react';
 export default function Admin(){
     return (
         <div>
-            <h1>Estamos en el Admin</h1>
+            <h1>Bienvenido a Svisi</h1>
         </div>
     )
 }

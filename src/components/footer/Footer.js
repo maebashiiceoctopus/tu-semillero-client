@@ -1,10 +1,10 @@
 import React from 'react';
-import { Layout,Row,Col } from 'antd';
+
 
 import "./Footer.scss";
 
 const Footer = () => {
-    const {Footer}=Layout;
+   
     return (
         <footer className="footer">
             <div className="footer__container">
@@ -14,7 +14,7 @@ const Footer = () => {
              
             </span>
             <span className="copyright">
-            ALEJANDRA ACOSTA | ESTUDIANTE INGENIERIA DE SISTEMAS
+            ALEJANDRA ACOSTA | FACULTAD INGENIERIA DE SISTEMAS
             </span>
             </div>
            

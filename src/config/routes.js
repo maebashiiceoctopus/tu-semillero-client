@@ -6,10 +6,13 @@ import LayoutBasic from '../layouts/LayoutBasic';
 import Admin from '../pages/Admin';
 import AdminSignIn from '../pages/Sign-In/SignIn';
 import AdminUsers from '../pages/Users/Users';
+import AdminBlog from '../pages/Blog'
 //basic pages
 import Home from '../pages/Home';
+import BlogPosts from '../pages/BlogPosts';
 import Contact from '../pages/Contact'
 import Error404 from '../pages/Error404'
+
 
 
 const routes =[
@@ -34,6 +37,11 @@ const routes =[
                 exact:true
             },
             {
+                path:'/admin/blog',
+                component:AdminBlog ,
+                exact:true
+            },
+            {
                 component:Error404
             }
         ]
@@ -43,9 +51,15 @@ const routes =[
         component: LayoutBasic,
         exact:false,
         routes: [
+           
             {
                 path:'/',
-                component: Home,
+                component: BlogPosts,
+                exact:true
+            },
+            {
+                path:'/blog/:url',
+                component: BlogPosts,
                 exact:true
             },
             {

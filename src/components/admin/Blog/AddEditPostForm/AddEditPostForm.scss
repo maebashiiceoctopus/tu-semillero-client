@@ -1,0 +1,52 @@
+@import '../../../../scss/index.scss';
+.add-edit-post-form{
+
+  &__upload{
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 10px;
+    .upload-cover-image{
+      width: 80px;
+    }
+  }
+
+  &__text{
+    font-size: 0.9rem;
+  }
+ 
+}
+.post-form{
+    
+    display: flex;
+    flex-direction: column;
+
+    &-content{
+        display: flex;
+        flex-direction: column;
+
+        @include mq-min(md) {
+           width: 100%;
+            flex-direction: row;
+        }
+       
+        &__input{
+            padding: 5px;
+            @include mq-min(md) {
+           
+                width: 100%;
+            }
+        }
+    }
+  
+  .tox-tinymce {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    width: 100%;
+  }
+
+  .btn-submit {
+    width: 100%;
+  }
+}
