@@ -102,7 +102,7 @@ function Post(props) {
       <Meta title={post.description} />
       <p
         className="post-description"
-        dangerouslySetInnerHTML={{ __html: post.description }}
+        dangerouslySetInnerHTML={{ __html: post.content }}
       ></p>
       <div className="button-container">
         <Link to={`blog/${post.url}`}>

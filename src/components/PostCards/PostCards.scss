@@ -1,91 +1,91 @@
-@import '../../scss/index.scss';
-
+@import "../../scss/index.scss";
 
 .pagination {
+  text-align: center;
+  margin-top: 1rem;
+}
+
+.post-container {
+  padding: 5rem;
+  .section-title {
+    font-size: 2.2rem;
+    font-weight: bold;
     text-align: center;
-    margin-top:1rem;
+    margin: 0 auto;
   }
-  
-  .post-container{
-   
-    padding: 5rem;
-    .section-title{
-      font-size: 2.2rem;
-      font-weight: bold;
-      text-align: center;
-      margin: 0 auto;
-    }
-    .line{
-      margin: 0 auto;
-      height: 2px;
-      width: 180px;
-      border: none;
-      background-color:$primary-color-ligth;
-    }
-    .section-description{
-
-      font-size: 1.2rem;
-      width: 50%;
-      margin: 1.5rem auto;
-      text-align: center
-      
-      ;
-    }
+  .line {
+    margin: 0 auto;
+    height: 2px;
+    width: 180px;
+    border: none;
+    background-color: $primary-color-ligth;
   }
+  .section-description {
+    font-size: 1.2rem;
+    width: 50%;
+    margin: 1.5rem auto;
+    text-align: center;
+  }
+}
 
-  .card-container{
-    margin-top: 2rem;
-   
-    .ant-list-items{
-      width: 80%;
-      margin:0 auto;
-      justify-content: center;
-      display: grid;
-      grid-template-columns: 300px 300px 300px;
-      column-gap: 5rem;
-   
-      .ant-card{
-        background-color: $font-grey-ligth;
-        margin: 1rem;
-        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-        .ant-card-cover{
-          img{
-            height: 100%;
-            object-fit: cover;
-          }
+.card-container {
+  margin-top: 2rem;
+
+  .ant-list-items {
+    width: 80%;
+    margin: 0 auto;
+    justify-content: center;
+    display: grid;
+    grid-template-columns: 300px 300px 300px;
+    column-gap: 5rem;
+
+    .ant-card {
+      background-color: $font-grey-ligth;
+      margin: 1rem;
+      box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+      .ant-card-cover {
+        img {
+          height: 100%;
+          object-fit: cover;
         }
-   
-        .ant-card-body{
-          .ant-card-meta{
-            .ant-card-meta-detail{
-              .ant-card-meta-description{
-                max-height: 200px;
-                
-              }
+      }
+
+      .ant-card-body {
+        .ant-card-meta {
+          .ant-card-meta-detail {
+            .ant-card-meta-title {
+              text-align: left;
+              font-weight: bold;
+            }
+            .ant-card-meta-description {
+              max-height: 200px;
             }
           }
-   
         }
       }
-      .post-description{
-        height: 100px;
+    }
+    .post-description {
+      height: 150px;
+      text-align: left;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      display: -webkit-box;
+      -webkit-line-clamp: 7;
+      -webkit-box-orient: vertical;
+    }
+
+    .button-container {
+      display: flex;
+      justify-content: center;
+
+      .button-post {
+        display: flex;
+        justify-content: center;
+        width: 100px;
+        background-color: $primary-color-ligth;
+        border: $primary-color-ligth;
+        font-size: bold;
       }
-   
-     .button-container{
-       display: flex;
-       justify-content: center;
-       
-   
-       .button-post{
-         display: flex;
-         justify-content: center;
-         width: 100px;
-         background-color: $primary-color-ligth;
-         border: $primary-color-ligth;
-         font-size: bold;
-       }
-     }
-     
-     }
+    }
   }
-  
+}
