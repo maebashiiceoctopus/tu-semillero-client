@@ -9,6 +9,7 @@ import AdminUsers from '../pages/Users/Users';
 import AdminBlog from '../pages/Blog'
 //basic pages
 import Home from '../pages/Home';
+import BlogPosts from '../pages/BlogPosts';
 import Contact from '../pages/Contact'
 import Error404 from '../pages/Error404'
 
@@ -53,6 +54,16 @@ const routes =[
             {
                 path:'/',
                 component: Home,
+                exact:true
+            },
+            {
+                path:'/BlogPosts',
+                component: BlogPosts,
+                exact:true
+            },
+            {
+                path:'/blog/:url',
+                component: BlogPosts,
                 exact:true
             },
             {
