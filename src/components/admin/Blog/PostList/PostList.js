@@ -39,7 +39,6 @@ export default function Postlist(props) {
           });
       }
     });
-    console.log(post);
   };
 
 
@@ -59,7 +58,7 @@ export default function Postlist(props) {
 function Post(props) {
   const { post, deletePost,editPost } = props;
   const [coverImage,setcoverImage]=useState(null);
-console.log(post)
+  
 useEffect(()=>{
   if(post.cover){
     getCoverApi(post.cover).then(response=>{
