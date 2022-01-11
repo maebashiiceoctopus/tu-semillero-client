@@ -178,7 +178,7 @@ function AddEditForm(props) {
       </section>
       <Editor
         
-        initialValue={postData.content ? postData.content : ""}
+        initialValue={postData.content  ||postData.cover ? postData.content : ""}
          init={{
            height: 400,
            menubar: true,
